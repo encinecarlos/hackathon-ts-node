@@ -1,0 +1,42 @@
+version: "3.4"
+services:
+  myapi:
+    image: node-api-ts
+    container_name: node-api-ts
+    build:
+      dockerfile: Dockerfile
+      context: .
+      args:
+        - ENV=local
+    environment:
+      - ENV=local
+      - MONGO_DB_URL=mongodb://mongodb-aula/avanade_node
+    ports:
+      - "8000:3000"
+    volumes:
+      - type: bind
+        source: ./app
+        target: /app
+    networks:
+      - avanade
+
+  mongo:
+    image: mongo
+    container_name: mongodb-aula
+    ports:
+      - "27017:27017"
+    volumes:
+      - type: bind
+        source: $HOME/mongo-data
+        target: /data/db
+    networks:
+      - avanade
+
+networks:
+  avanade:
+    external:
+      name: avanade
+
+# adicionar mongoDB - OK
+# adicionar uma rede - OK
+# adicionar myapi e o mongoDB na mesma rede
