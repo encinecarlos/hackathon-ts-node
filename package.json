@@ -10,11 +10,8 @@
   "author": "",
   "license": "ISC",
   "dependencies": {
-    "bcrypt": "^5.0.0",
     "consign": "^0.1.6",
-    "express": "^4.17.1",
-    "jsonwebtoken": "^8.5.1",
-    "mongoose": "^5.11.12"
+    "express": "^4.17.1"
   },
   "devDependencies": {
     "@types/bcryptjs": "^2.4.2",
