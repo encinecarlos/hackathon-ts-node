@@ -5,8 +5,7 @@ const app = express();
 
 app.use(express.json());
 
-consign()
-.include('./config/routes.ts')
+consign().include('app/controllers').then('./app/config/routes.ts')
 .into(app);
 
 
