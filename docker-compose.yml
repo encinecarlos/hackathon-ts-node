@@ -2,7 +2,7 @@ version: "3.4"
 services:
   myapi:
     image: encinecarlos-node
-    container_name: node-api-ts
+    container_name: node-api-ts-mysql
     build:
       dockerfile: Dockerfile
       context: .

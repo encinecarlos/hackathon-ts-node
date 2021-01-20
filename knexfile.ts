@@ -3,9 +3,9 @@
 module.exports = {
   client: 'mysql',
   connection: {
-    database: 'lojadb',
+    database: 'ecommerce_api',
     user: 'root',
-    password: 'admin'
+    password: 'ecommerce-api'
   },
   migrations: {
     tableName: 'knex_migrations'
