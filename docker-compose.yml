@@ -1,15 +1,10 @@
-version: "3.4"
+version: "3.9"
 services:
   myapi:
     image: encinecarlos-node
-    container_name: node-api-ts
-    build:
-      dockerfile: Dockerfile
-      context: .
-      args:
-        - ENV=local
+    container_name: ecommerce-api
     environment:
-      - ENV=local
+      - ENV=dev
     ports:
       - "8000:3000"
     volumes:
@@ -23,10 +18,17 @@ services:
     image: mysql
     restart: on-failure:3
     volumes:
-      - ./data:/var/lib/mysql
+      - type: bind
+        source: $HOME/data
+        target: /var/lib/mysql
+    ports:
+      - "3306:3306"
+    # command: --default-authentication-plugin=mysql_native_password
     environment:
       - MYSQL_ROOT_PASSWORD=ecommerce-api
       - MYSQL_DATABASE=ecommerce_api
+      - MYSQL_USER=ecommerce-api
+      - MYSQL_PASSWORD=api-commerce
     networks:
       - avanade
 
