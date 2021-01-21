@@ -1,12 +1,19 @@
-#!/bin/bash
+#!/usr/bin/env node
+const exec = require("child_process").exec;
+if (process.env.ENV === "dev") {
+  exec("npm run dev", (err, stdout, stderr) => {
+    if (err) {
+      console.log(err);
+    }
 
-if [ "${ENV}" = 'production' ]; then
-  npm run build
-  npm run start
-fi
+    console.log(stdout);
+  });
+} else {
+  exec("npm start", (err, stdout, stderr) => {
+    if (err) {
+      console.log(err);
+    }
 
-if [ "${ENV}" = 'local' ]; then
-  npm run dev
-fi
-
-exec "$@"
+    console.log(stdout);
+  });
+}
