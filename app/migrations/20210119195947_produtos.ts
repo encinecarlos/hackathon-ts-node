@@ -1,14 +1,15 @@
-exports.up = function(knex) {
-  return knex.schema.createTable('produtos', table => {
-      table.increments('id').primary()
-      table.string('nome').notNull()
-      table.string('descricao')
-      table.string('categoria').notNull()
-      table.decimal('preco').notNull()
-      table.integer('quantidade').notNull()
-  })
+import Knex from "knex";
+exports.up = function (knex: Knex) {
+  return knex.schema.createTable("produtos", (table) => {
+    table.increments("id").primary();
+    table.string("nome").notNullable();
+    table.string("descricao");
+    table.string("categoria").notNullable();
+    table.decimal("preco").notNullable();
+    table.integer("quantidade").notNullable();
+  });
 };
 
-exports.down = function(knex) {
-  return knex.schema.dropTable('produtos')
+exports.down = function (knex: Knex) {
+  return knex.schema.dropTable("produtos");
 };

@@ -9,6 +9,8 @@ services:
     command: "npm run dev"
     ports:
       - "3000:3000"
+    expose:
+      - 3306
     volumes:
       - type: bind
         source: ./app
@@ -17,7 +19,6 @@ services:
       - avanade
 
   db:
-
     image: mysql:5.7
     container_name: ecommerce-db
     volumes:
@@ -28,8 +29,6 @@ services:
       - "3306:3306"
     environment:
       - MYSQL_ROOT_PASSWORD=ecommerce-api
-      - MYSQL_USER=ecommerce-api
-      - MYSQL_PASSWORD=api-commerce
       - MYSQL_DATABASE=ecommerce_api
       - MYSQL_USER=ecommerce-api
       - MYSQL_PASSWORD=api-commerce
