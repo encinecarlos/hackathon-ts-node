@@ -1,14 +1,15 @@
-exports.up = function(knex) {
-  return knex.schema.createTable('vendas', table => {
-      table.increments('id').primary()
-      table.string('produto').notNull()
-      table.integer('quantidade').notNull()
-      table.string('vendedor_id').notNull()      
-      table.integer('fk_cliente').notNull().unsigned()
-      table.foreign('fk_cliente').references('id').inTable('clientes')
-  })
+import Knex from "knex";
+exports.up = function (knex: Knex) {
+  return knex.schema.createTable("vendas", (table) => {
+    table.increments("id").primary();
+    table.integer("quantidade").notNullable();
+    table.decimal("total_price", 8, 2).notNullable();
+    table.string("vendedor"); // informar o nome do vendedor
+    table.integer("celiente_id").notNullable().unsigned();
+    table.foreign("celiente_id").references("id").inTable("clientes");
+  });
 };
 
-exports.down = function(knex) {
-  return knex.schema.dropTable('vendas')
+exports.down = function (knex: Knex) {
+  return knex.schema.dropTable("vendas");
 };

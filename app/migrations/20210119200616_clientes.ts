@@ -1,13 +1,14 @@
-exports.up = function(knex) {
-  return knex.schema.createTable('clientes', table => {
-      table.increments('id').primary()
-      table.string('nome').notNull()
-      table.string('cpf').notNull()
-      table.string('telefone').notNull()
-      table.string('email').notNull()
-  })
+import Knex from "knex";
+exports.up = function (knex: Knex) {
+  return knex.schema.createTable("clientes", (table) => {
+    table.increments("id").primary();
+    table.string("nome").notNullable();
+    table.string("cpf").notNullable();
+    table.string("telefone").notNullable();
+    table.string("email").notNullable();
+  });
 };
 
-exports.down = function(knex) {
-  return knex.schema.dropTable('clientes')
+exports.down = function (knex: Knex) {
+  return knex.schema.dropTable("clientes");
 };

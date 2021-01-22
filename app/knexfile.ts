@@ -1,13 +1,14 @@
 // Update with your config settings.
 
 module.exports = {
-  client: 'mysql',
+  client: "mysql",
   connection: {
-    database: 'ecommerce_api',
-    user: 'ecommerce_api',
-    password: 'ecommerce_api'
+    host: "ecommerce-db",
+    database: "ecommerce_api",
+    user: "ecommerce-api",
+    password: "api-commerce",
   },
   migrations: {
-    tableName: 'knex_migrations'
-  }
+    tableName: "knex_migrations",
+  },
 };
