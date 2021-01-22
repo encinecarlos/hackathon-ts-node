@@ -36,6 +36,7 @@ export const deleteProduto: RequestHandler = (req, res) => {
   // res.status(200).json({ text: "removendo produto" });
   db("produtos")
     .where({ id: req.params.id })
+    .del()
     .then(() =>
       res
         .status(200)
