@@ -1,25 +1,51 @@
 import { RequestHandler } from "express";
-
+const db = require("../config/db");
 
 export const getClientes: RequestHandler = (req, res) => {
-    res.status(200).json({text: "Retornando Lista de Cliente"});
-}
+  //   res.status(200).json({ text: "Retornando Lista de Cliente" });
+  db("clientes")
+    .then((clientes: any) => res.status(200).json(clientes))
+    .catch((err: any) => res.status(500).json(err));
+};
+
+export const getById: RequestHandler = (req, res) => {
+  db("clientes")
+    .where({ id: req.params.id })
+    .then((cliente: any) => res.status(200).json(cliente))
+    .catch((err: any) => res.status(200).json(err.message));
+};
 
 export const saveCliente: RequestHandler = (req, res) => {
-    res.status(200).json({text: "Salvando Cliente"});
-}
+  db("clientes")
+    .insert(req.body)
+    .then((data: any) => res.status(201).json(data))
+    .catch((err: any) => res.status(200).json(err.message));
+};
 
 export const updateCliente: RequestHandler = (req, res) => {
-    res.status(200).json({text: "Atualizando Cliente"});
-}
+  db("clientes")
+    .update(req.body)
+    .where({ id: req.params.id })
+    .then(() => res.status(204).json())
+    .catch((err: any) => res.status(500).json(err));
+};
 
 export const deleteCliente: RequestHandler = (req, res) => {
-    res.status(200).json({text: "Deletando Cliente"});
-}
+    db("produtos")
+    .where({ id: req.params.id })
+    .del()
+    .then(() =>
+      res
+        .status(200)
+        .json({ status: 200, messaghe: "Produto removido com sucesso" })
+    )
+    .catch((err: any) => res.status(500).json(err));
+};
 
-export default{
-    getClientes,
-    saveCliente,
-    updateCliente,
-    deleteCliente
-}
+export default {
+  getClientes,
+  getById,
+  saveCliente,
+  updateCliente,
+  deleteCliente,
+};

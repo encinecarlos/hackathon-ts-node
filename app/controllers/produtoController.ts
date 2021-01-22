@@ -2,7 +2,6 @@ import { RequestHandler } from "express";
 const db = require("../config/db");
 
 export const getProdutos: RequestHandler = (req, res) => {
-  // res.status(200).json({ text: "Retornando Lista de produtos" });
   db("produtos")
     .then((produtos: any) => res.status(200).json(produtos))
     .catch((err: any) => res.status(500).json(err));
@@ -16,7 +15,6 @@ export const getById: RequestHandler = (req, res) => {
 };
 
 export const saveProduto: RequestHandler = (req, res) => {
-  // res.status(200).json({ text: "Salvando produto" });
   db("produtos")
     .insert(req.body)
     .then((data: any) => res.status(201).json(data))
@@ -24,7 +22,6 @@ export const saveProduto: RequestHandler = (req, res) => {
 };
 
 export const updateProduto: RequestHandler = (req, res) => {
-  // res.status(200).json({ text: "Atualizando produto" });
   db("produtos")
     .update(req.body)
     .where({ id: req.params.id })
@@ -33,7 +30,6 @@ export const updateProduto: RequestHandler = (req, res) => {
 };
 
 export const deleteProduto: RequestHandler = (req, res) => {
-  // res.status(200).json({ text: "removendo produto" });
   db("produtos")
     .where({ id: req.params.id })
     .del()
