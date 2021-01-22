@@ -1,5 +1,8 @@
 module.exports = (app: any) => {
-  app.route("/produto").get(app.controllers.produtoController.getProducts);
+  app.route("/", (req: any, res: any) => {
+    res.status(200).json({ message: "welcome" });
+  });
+  app.route("/produto").get(app.controllers.produtoController.getProdutos);
   // .post(app.controllers.produtoController.saveProduto);
 
   //   app
