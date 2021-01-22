@@ -8,6 +8,13 @@ export const getProdutos: RequestHandler = (req, res) => {
     .catch((err: any) => res.status(500).json(err));
 };
 
+export const getById: RequestHandler = (req, res) => {
+  db("produtos")
+    .where({ id: req.params.id })
+    .then((produto: any) => res.status(200).json(produto))
+    .catch((err: any) => res.status(500).json(err));
+};
+
 export const saveProduto: RequestHandler = (req, res) => {
   // res.status(200).json({ text: "Salvando produto" });
   db("produtos")
@@ -39,6 +46,7 @@ export const deleteProduto: RequestHandler = (req, res) => {
 
 export default {
   getProdutos,
+  getById,
   saveProduto,
   updateProduto,
   deleteProduto,

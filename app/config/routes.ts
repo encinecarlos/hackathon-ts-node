@@ -9,7 +9,8 @@ module.exports = (app: any) => {
     .post(app.controllers.produtoController.saveProduto);
 
   app
-    .route("/produto/:id")
+    .route("/produtos/:id")
+    .get(app.controllers.produtoController.getById)
     .put(app.controllers.produtoController.updateProduto)
     .delete(app.controllers.produtoController.deleteProduto);
 
