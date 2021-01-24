@@ -1,23 +1,32 @@
 import { RequestHandler } from "express";
 const db = require("../config/db");
 
+export type ProdutoProps = {
+  id: number
+  nome: string
+  descricao: string
+  categoria: string
+  preco: number
+  quantidade: number 
+}
+
 export const getProdutos: RequestHandler = (req, res) => {
   db("produtos")
-    .then((produtos: any) => res.status(200).json(produtos))
+    .then((produtos: ProdutoProps) => res.status(200).json(produtos))
     .catch((err: any) => res.status(500).json(err));
 };
 
 export const getById: RequestHandler = (req, res) => {
   db("produtos")
     .where({ id: req.params.id })
-    .then((produto: any) => res.status(200).json(produto))
+    .then((produto: ProdutoProps) => res.status(200).json(produto))
     .catch((err: any) => res.status(500).json(err));
 };
 
 export const saveProduto: RequestHandler = (req, res) => {
   db("produtos")
     .insert(req.body)
-    .then((data: any) => res.status(201).json(data))
+    .then((data: ProdutoProps) => res.status(201).json(data))
     .catch((err: any) => res.status(500).json(err));
 };
 
