@@ -41,7 +41,7 @@ export const deleteVenda: RequestHandler = (req, res) => {
     .then(() =>
       res
         .status(200)
-        .json({ status: 200, messaghe: "Venda removida com sucesso" })
+        .json({ status: 200, message: "Venda removida com sucesso" })
     )
     .catch((err: any) => res.status(500).json(err));
 }

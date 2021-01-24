@@ -45,7 +45,7 @@ export const deleteCliente: RequestHandler = (req, res) => {
     .then(() =>
       res
         .status(200)
-        .json({ status: 200, messaghe: "Cliente removido com sucesso" })
+        .json({ status: 200, message: "Cliente removido com sucesso" })
     )
     .catch((err: any) => res.status(500).json(err));
 };
