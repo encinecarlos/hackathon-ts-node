@@ -4,7 +4,7 @@ module.exports = {
   client: "mysql",
   connection: {
     host: "ecommerce-db",
-    database: "db-api",
+    database: "db_api",
     user: "api",
     password: "api",
   },
