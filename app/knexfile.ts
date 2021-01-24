@@ -4,9 +4,9 @@ module.exports = {
   client: "mysql",
   connection: {
     host: "ecommerce-db",
-    database: "ecommerce_api",
-    user: "ecommerce-api",
-    password: "api-commerce",
+    database: "db-api",
+    user: "api",
+    password: "api",
   },
   migrations: {
     tableName: "knex_migrations",

@@ -6,7 +6,8 @@
   "scripts": {
     "start": "node index.ts",
     "build": "tsc",
-    "dev": "nodemon index.ts"
+    "dev": "nodemon index.ts",
+    "migrate": "npx knex migrate:latest"
   },
   "keywords": [],
   "author": "",
