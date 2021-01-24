@@ -39,13 +39,13 @@ export const updateCliente: RequestHandler = (req, res) => {
 };
 
 export const deleteCliente: RequestHandler = (req, res) => {
-    db("produtos")
+    db("clientes")
     .where({ id: req.params.id })
     .del()
     .then(() =>
       res
         .status(200)
-        .json({ status: 200, messaghe: "Produto removido com sucesso" })
+        .json({ status: 200, messaghe: "Cliente removido com sucesso" })
     )
     .catch((err: any) => res.status(500).json(err));
 };
