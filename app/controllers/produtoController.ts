@@ -4,7 +4,7 @@ const db = require("../config/db");
 export type ProdutoProps = {
   id: number
   nome: string
-  descricao: string
+  descricao?: string
   categoria: string
   preco: number
   quantidade: number 

@@ -4,7 +4,7 @@ exports.up = function (knex: Knex) {
     table.increments("id").primary();
     table.integer("quantidade").notNullable();
     table.decimal("total_price", 8, 2).notNullable();
-    table.string("vendedor"); // informar o nome do vendedor
+    table.string("vendedor");
     table.integer("cliente_id").notNullable().unsigned();
     table.foreign("cliente_id").references("id").inTable("clientes");
   });

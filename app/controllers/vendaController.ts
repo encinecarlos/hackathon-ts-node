@@ -5,7 +5,7 @@ export type VendaProps = {
     id: number
     quantidade: number
     total_price: number
-    vendedor: string    
+    vendedor?: string    
     cliente_id: number
 }
 
