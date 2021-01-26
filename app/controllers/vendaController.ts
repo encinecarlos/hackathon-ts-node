@@ -1,5 +1,6 @@
 import { RequestHandler } from "express";
 const db = require("../config/db");
+const vendaProdutoService = require("../service/vendaProduto.service");
 
 export type VendaProps = {
     id: number
@@ -16,12 +17,27 @@ export const getVendas: RequestHandler = (req, res) => {
     .catch((err: any) => res.status(500).json(err));
 }
 
-export const saveVenda: RequestHandler = (req, res) => {
+export const saveVenda: RequestHandler = async (req, res) => {
     //res.status(200).json({text: "Salvando Venda"});
-    db("vendas")
-    .insert(req.body)
-    .then((data: VendaProps) => res.status(201).json(data))
-    .catch((err: any) => res.status(200).json(err.message));
+    try{
+        const payload = {
+            total_price: req.body.total_price,
+            vendedor: req.body.vendedor,
+            cliente_id:  req.body.cliente_id
+        }
+        
+        const venda_id  = await db("vendas").insert(payload);
+
+        //salva na tabela vendas_produtos
+        const vendas_produtos = await vendaProdutoService.saveVendaProduto(req.body.produtos, venda_id[0]);
+
+        res.status(201).json(venda_id);
+
+    }catch(error){
+        console.log("erro [*********]", error);
+        res.status(500).json({mensagem: error.message});
+    }
+
 }
 
 export const updateVenda: RequestHandler = (req, res) => {
