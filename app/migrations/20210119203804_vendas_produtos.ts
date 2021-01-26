@@ -4,6 +4,7 @@ exports.up = function (knex: Knex) {
     table.increments("id").primary();
     table.integer("vendas_id").notNullable().unsigned();
     table.integer("produto_id").notNullable().unsigned();
+    table.integer("quantidade_produto").notNullable();
     table.foreign("vendas_id").references("id").inTable("vendas");
     table.foreign("produto_id").references("id").inTable("produtos");
   });

@@ -33,4 +33,8 @@ module.exports = (app: any) => {
     .route("/vendas/:id")
     .put(app.controllers.vendaController.updateVenda)
     .delete(app.controllers.vendaController.deleteVenda);
+    
+  app
+    .route("/vendas-produtos")
+    .get(app.controllers.vendaProdutoController.getVendasProdutos);
 };
