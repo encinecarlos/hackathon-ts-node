@@ -2,7 +2,6 @@ import Knex from "knex";
 exports.up = function (knex: Knex) {
   return knex.schema.createTable("vendas", (table) => {
     table.increments("id").primary();
-    table.integer("quantidade").notNullable();
     table.decimal("total_price", 8, 2).notNullable();
     table.string("vendedor");
     table.integer("cliente_id").notNullable().unsigned();

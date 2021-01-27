@@ -25,6 +25,16 @@ module.exports = (app: any) => {
     .delete(app.controllers.clienteController.deleteCliente);
 
   app
+    .route("/funcionarios")
+    .get(app.controllers.funcionarioController.getFuncionarios)
+    .post(app.controllers.funcionarioController.saveFuncionario);
+
+  app
+    .route("/funcionarios/:id")
+    .put(app.controllers.funcionarioController.updateFuncionario)
+    .delete(app.controllers.funcionarioController.deleteFuncionario);
+
+  app
     .route("/vendas")
     .get(app.controllers.vendaController.getVendas)
     .post(app.controllers.vendaController.saveVenda);
@@ -33,4 +43,8 @@ module.exports = (app: any) => {
     .route("/vendas/:id")
     .put(app.controllers.vendaController.updateVenda)
     .delete(app.controllers.vendaController.deleteVenda);
+
+  app
+    .route("/vendas-produtos")
+    .get(app.controllers.vendaProdutoController.getVendasProdutos);
 };

@@ -2,12 +2,12 @@ import { RequestHandler } from "express";
 const db = require("../config/db");
 
 export type ClienteProps = {
-  id: number
-  nome: string
-  cpf: string
-  telefone: string
-  email: string
-}
+  id: number;
+  nome: string;
+  cpf: string;
+  telefone: string;
+  email: string;
+};
 
 export const getClientes: RequestHandler = (req, res) => {
   //   res.status(200).json({ text: "Retornando Lista de Cliente" });
@@ -23,7 +23,7 @@ export const getById: RequestHandler = (req, res) => {
     .catch((err: any) => res.status(200).json(err.message));
 };
 
-export const saveCliente: RequestHandler = (req, res) => {
+export const saveCliente: RequestHandler = async (req, res) => {
   db("clientes")
     .insert(req.body)
     .then((data: ClienteProps) => res.status(201).json(data))
@@ -39,7 +39,7 @@ export const updateCliente: RequestHandler = (req, res) => {
 };
 
 export const deleteCliente: RequestHandler = (req, res) => {
-    db("clientes")
+  db("clientes")
     .where({ id: req.params.id })
     .del()
     .then(() =>
